@@ -23,13 +23,12 @@ scrape_configs:
     path: /var/log/journal
     labels:
       job: systemd-journal
-      hostname1: awebber-pc
   relabel_configs:
     - source_labels: ['__journal__systemd_unit']
       target_label: 'unit'
     - source_labels: ['__journal_priority']
       target_label: 'priority'
-    - source_labels: ['__journal_machine_id']
+    - source_labels: ['__journal__machine_id']
       target_label: 'machine'
     - source_labels: ['__journal__hostname']
       target_label: 'host'
